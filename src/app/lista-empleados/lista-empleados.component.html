@@ -1,0 +1,32 @@
+
+
+<h2 class="text-center">Lista De Empleados</h2>
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+           
+           <th>id </th>
+           <th>nro_documento </th>
+           <th>nombre </th>
+           <th>apellido </th>
+           <th>email </th>
+           <th>fecha_nacimiento </th>
+           <th>fecha_ingreso</th>
+           <th>fecha_creacion</th> 
+        </tr>
+    </thead>
+
+    <tbody class="table-blue">
+        <tr *ngFor="let empleado of empleados">
+           <td>{{empleado.id }}</td>
+           <td>{{empleado.nro_documento }}</td>
+           <td>{{empleado.nombre }}</td>
+           <td>{{empleado.apellido }}</td>
+           <td>{{empleado.email }}</td>
+           <td>{{empleado.fecha_nacimiento | date: 'dd/MM/yyyy' }}</td>
+           <td>{{empleado.fecha_ingreso | date: 'dd/MM/yyyy'}}</td>
+           <td>{{empleado.fecha_creacion | date: 'dd/MM/yyyy'}}</td> 
+        
+        </tr>
+    </tbody>
+</table>
