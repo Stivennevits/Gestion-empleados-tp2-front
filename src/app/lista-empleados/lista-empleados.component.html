@@ -13,6 +13,7 @@
            <th>fecha_nacimiento </th>
            <th>fecha_ingreso</th>
            <th>fecha_creacion</th> 
+           <th>Acciones</th>
         </tr>
     </thead>
 
@@ -26,7 +27,14 @@
            <td>{{empleado.fecha_nacimiento | date: 'dd/MM/yyyy' }}</td>
            <td>{{empleado.fecha_ingreso | date: 'dd/MM/yyyy'}}</td>
            <td>{{empleado.fecha_creacion | date: 'dd/MM/yyyy hh:mm:ss'}}</td> 
-        
+           
+           <td>
+            <div class="d-flex justify-content-between">
+            <button (click)= "actualizarEmpleado(empleado.id)" class="btn btn-info">Editar</button>
+            <button (click)= "eliminarEmpelado(empleado.id)" class="btn btn-danger" style="margin-left : 10px">Eliminar</button>
+            <button (click)= "verDetallesDelEmpleado(empleado.id)" class="btn btn-primary" style="margin-left : 10px">Ver Detalles</button>
+            </div>
+        </td> 
         </tr>
     </tbody>
 </table>
