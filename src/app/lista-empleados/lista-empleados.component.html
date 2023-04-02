@@ -1,8 +1,9 @@
 
 
-<h2 class="text-center">Lista De Empleados</h2>
-<table class="table table-striped">
-    <thead class="table-dark">
+<h2 class="text-center mx-auto ">Lista De Empleados</h2>
+<div class="mx-auto table-responsive">
+<table class="table table-striped text-center table-mx-auto ">
+    <thead class="table-dark border border-primary ">
         <tr>
            
            <th>id </th>
@@ -17,7 +18,7 @@
         </tr>
     </thead>
 
-    <tbody class="table-blue">
+    <tbody class="table-blue mx-auto border border-primary">
         <tr *ngFor="let empleado of empleados">
            <td>{{empleado.id }}</td>
            <td>{{empleado.nro_documento }}</td>
@@ -29,12 +30,14 @@
            <td>{{empleado.fecha_creacion | date: 'dd/MM/yyyy hh:mm:ss'}}</td> 
            
            <td>
-            <div class="d-flex justify-content-between">
-            <button (click)= "actualizarEmpleado(empleado.id)" class="btn btn-info">Editar</button>
-            <button (click)= "eliminarEmpelado(empleado.id)" class="btn btn-danger" style="margin-left : 10px">Eliminar</button>
+            <div class="d-flex justify-content-between mx-auto ">
+            <button (click)= "actualizarEmpleado(empleado.id)" class="btn btn-info border border-primary">Editar</button>
+            <button (click)= "eliminarEmpelado(empleado.id)" class="btn btn-danger border border-primary" style="margin-left : 10px">Eliminar</button>
             <button (click)= "verDetallesDelEmpleado(empleado.id)" class="btn btn-primary" style="margin-left : 10px">Ver Detalles</button>
             </div>
         </td> 
         </tr>
     </tbody>
 </table>
+
+</div>

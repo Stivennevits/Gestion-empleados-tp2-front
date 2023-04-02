@@ -6,7 +6,7 @@ import { tap, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 
-@Component({
+@Component({  
   selector: 'app-registrar-empleado',
   templateUrl: './registrar-empleado.component.html',
   styleUrls: ['./registrar-empleado.component.css']
@@ -19,6 +19,7 @@ export class RegistrarEmpleadoComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
 
   guardarEmpleado(){
     this.empleadoServicio.registrarEmpleado(this.empleado).subscribe(

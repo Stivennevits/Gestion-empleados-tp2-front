@@ -1,6 +1,6 @@
 <div class="col-md-6 offset-md-3">
     <h3 class="text-center">Crear Nuevo Empleado</h3>
-    <form (ngSubmit)= "onSubmit()">
+    <form (ngSubmit)= "onSubmit()" #empleadoForm = "ngForm">
         <div class="form-group">
             <label>Numero de Documento: </label>
             <input type="number"
@@ -8,7 +8,28 @@
             id="nro_documento"
             [(ngModel)] = "empleado.nro_documento"
             name="nro_documento"
+            required
+            minlength = "4"
+            maxlength = "20"
+            placeholder="Ingrese el Numero de documento"
+            #nro_documento = "ngModel"
+           
+            
             >
+            <div class="alert-danger" *ngIf= "nro_documento.invalid && nro_documento.dirty || nro_documento.touched" >
+
+                <div *ngIf = "nro_documento.errors?.['required']">
+                    Numero de documento es obligatorio
+                </div>    
+                <div *ngIf = "nro_documento.errors?.['minlength']">
+                    Numero de documento debe tener mínimo 4 caracteres 
+                </div>   
+                <div *ngIf = "nro_documento.errors?.['maxlength']">
+                    Numero de documento debe tener máximo 20 caracteres 
+                </div>   
+            </div>
+               
+               
         </div>
 
         <div class="form-group">
@@ -18,7 +39,24 @@
             id="nombre"
             [(ngModel)] = "empleado.nombre"
             name="nombre"
+            required
+            minlength = "4"
+            maxlength = "20"
+            placeholder="Ingrese el Nombre"
+            #nombre = "ngModel"
             >
+            <div class="alert-danger" *ngIf= "nombre.invalid && nombre.dirty || nombre.touched" >
+                
+                <div *ngIf = "nombre.errors?.['required']">
+                    El Nombre es obligatorio
+                </div>
+                <div *ngIf = "nombre.errors?.['minlength']">
+                    El Nombre debe tener mínimo 4 caracteres 
+                </div>   
+                <div *ngIf = "nombre.errors?.['maxlength']">
+                    El Nombre debe tener máximo 20 caracteres 
+                </div>   
+            </div>
         </div>
 
         <div class="form-group">
@@ -28,7 +66,25 @@
             id="apellido"
             [(ngModel)] = "empleado.apellido"
             name="apellido"
+            required
+            minlength = "4"
+            maxlength = "20"
+            placeholder="Ingrese el Apellido"
+            #apellido = "ngModel"
             >
+
+            <div class="alert-danger" *ngIf= "apellido.invalid && apellido.dirty || apellido.touched" >
+                
+                <div *ngIf = "apellido.errors?.['required']">
+                    El Apellido es obligatorio
+                </div>
+                <div *ngIf = "apellido.errors?.['minlength']">
+                    El Apellido debe tener mínimo 4 caracteres 
+                </div>   
+                <div *ngIf = "apellido.errors?.['maxlength']">
+                    El Apellido debe tener máximo 20 caracteres 
+                </div>   
+            </div>
         </div>
 
         <div class="form-group">
@@ -38,17 +94,42 @@
             id="email"
             [(ngModel)] = "empleado.email"
             name="email"
+            required
+            pattern= "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$"
+            placeholder="Ingrese el email"
+            #email = "ngModel"
             >
+
+            <div class="alert-danger" *ngIf= "email.invalid && email.dirty || email.touched" >
+                
+                <div *ngIf = "email.errors?.['required']">
+                    El email es obligatorio
+                </div>
+                <div *ngIf = "email.errors?.['pattern']">
+                    Debe ser un email válido, ejemplo@gmail.com
+                </div>   
+                 
+            </div>
         </div>
 
         <div class="form-group">
             <label>fecha de nacimiento: </label>
             <input type="date"
             class="form-control"
-            id="fecha_nacimiento"
+            id="fecha_ingreso"
             [(ngModel)] = "empleado.fecha_nacimiento"
+            required
             name="fecha_nacimiento"
+            #fecha_nacimiento = "ngModel"
             >
+            <div class="alert-danger" *ngIf= "fecha_nacimiento.invalid && fecha_nacimiento.dirty || fecha_nacimiento.touched" >
+                
+                <div *ngIf = "fecha_nacimiento.errors?.['required']">
+                    La  fecha de nacimiento es obligatoria
+                </div>
+                  
+                 
+            </div>
         </div>
 
         <div class="form-group">
@@ -57,10 +138,20 @@
             class="form-control"
             id="fecha_ingreso"
             [(ngModel)] = "empleado.fecha_ingreso"
+            required
             name="fecha_ingreso"
+            #fecha_ingreso = "ngModel"
             >
+            <div class="alert-danger" *ngIf= "fecha_ingreso.invalid && fecha_ingreso.dirty || fecha_ingreso.touched" >
+                
+                <div *ngIf = "fecha_ingreso.errors?.['required']">
+                    El fecha de ingreso es obligatorio
+                </div>
+            
+                 
+            </div>
         </div>
 
-        <button class="btn btn-success">Guardar</button>
+        <button class="btn btn-success" [disabled] = "!empleadoForm.form.valid" >Guardar</button>
     </form>
 </div>
